@@ -17,14 +17,20 @@ describe('Reading user out of the database', () => {
             name: 'Joe'
         }).then((users) => {
             // 
-            console.log(users);
-            console.log(users[0]._id.toString())
-            console.log(joe._id.toString());
+
             assert(users[0]._id.toString() === joe._id.toString())
             done();
         }).catch((err) => {
             console.log(err);
         });
+    });
+    it('find a user with a particular id', (done) => {
+        User.findOne({ _id: joe._id }).then((user) => {
+
+            assert(user.name === "Joe")
+            done();
+        })
     })
+
 
 })
